@@ -82,19 +82,21 @@
                      <!-- Salada -->
                       <div class="row mt-2">
 
-                        <div class="col">
+                        <div class="col"><!-- sistema de coluna -->
 
-                            <div class="card">
+                            <div class="card"> <!--  estilo de coluna e celulas -->
 
                                 <div class="card-header">
                                     Salada
 
-                                </div>
+                               </div>
                                 <div class="card-body">
 
                                 </div>
                                 <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" value="alface" v-model=""> <!-- alternativa -->
+
+                                    <input type="checkbox" class="form-check-input" value="alface" v-model="inputSalada"> <!-- alternativa -->
+
                                     <label class="form-check-label"> Alface</label>
 
                                 </div> 
@@ -107,7 +109,45 @@
 
 
 
-                </div> <!-- Fim col md -->
+                </div> <!-- Fim salada -->
+
+                <!-- Molhos -->
+                <div class="row mt-2">
+
+                    <div class="col"><!-- sistema de coluna -->
+
+                        <div class="card"> <!--  estilo de coluna e celulas -->
+
+                            <div class="card-header">
+                                Molhos
+
+                           </div>
+                            <div class="card-body">
+
+                            </div>
+                            <div class="form-check">
+
+                                <input type="checkbox" class="form-check-input" value="molho" v-model="inputSalada"> <!-- alternativa -->
+
+                                <label class="form-check-label"> </label>
+
+
+                                <input type="checkbox" class="form-check-input" value="molho" v-model="inputSalada"> <!-- alternativa -->
+
+                                <label class="form-check-label"> </label>
+
+                                <input type="checkbox" class="form-check-input" value="molho" v-model="inputSalada"> <!-- alternativa -->
+
+                                <label class="form-check-label"> </label>
+                        
+                            </div> 
+                             
+                        </div>
+
+                    </div>
+
+                  </div>
+
 
 
 
@@ -121,7 +161,8 @@
             el: '#app',
 
             data: {  // atributos // propriedades
-                inputTipoPao: '',
+                inputTipoPao: '', /* radio = obrigatorio */
+                inputSalada: [],/* checkbox = opcional */
 
                 etapa: 1,
 
@@ -139,6 +180,15 @@
                             return ['imagens/padrao/pao_superior.png', 'imagens/padrao/pao_inferior.png']
                     }
 
+                },
+
+                alface () {
+                    if (this.inputSalada.includes('alface')) {
+                        return 'imagens/alface.png'
+                    }
+
+
+                  return 'imagens/padrao/alface.png'  
                 },
 
             },
