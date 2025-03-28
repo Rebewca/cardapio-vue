@@ -278,7 +278,8 @@
                         <div class="col d-flex justify-content-between">
 
                             <button type="button" class=" btn btn-warning" @click="etapa-= 1"> Editar Pedido</button>
-                            <button type="button" class=" btn btn-success" @click="ConfirmarPedido()">Confirmar Pedido</button>
+                            <button type="button" class=" btn btn-success" @click="ConfirmarPedido()">Confirmar
+                                Pedido</button>
 
 
                         </div>
@@ -305,11 +306,13 @@
                 inputTipoPao: '', /* radio = obrigatorio */
                 inputSalada: [],
                 inputMolhos: [],  /* checkbox = opcional */
-
+                etapa: 1,
                 inputBurger: '',
                 inputNome: '',
                 inputMesa: '',
-                etapa: 1,
+                novoPedidoAssincrono: null
+
+
 
 
 
@@ -392,17 +395,37 @@
 
                 },
                 ConfirmarPedido() {
-                    if(this.inputNome && this.inputMesa) {
+                    if (this.inputNome && this.inputMesa) {
                         this.etapa = 3
 
                     }
                     else {
                         alert('Voce precisa informar o seu Nome e Mesa.')
                     }
+
                 },
+                novoPedido() {
 
+                    this.etapa = 1
 
+                    this.inputTipoPao = ''
+                    this.inputSalada = []
+                    this.inputMolhos = []
+                    this.inputBurger = ''
+                    this.inputNome = ''
+                    this.inputMesa = ''
+                },
             },
+
+
+            watch: {
+                etapa(novoValor) {
+                    if (novoValor == 1) {
+                        clearTimeout(this.novoPedidoAssincrono)
+                    }
+                }
+
+            }
 
 
 
